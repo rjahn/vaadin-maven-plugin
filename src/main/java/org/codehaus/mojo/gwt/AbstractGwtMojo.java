@@ -277,6 +277,7 @@ extends AbstractMojo
         // return getJarFiles( GWT_USER );
     }
 
+    @SuppressWarnings("unchecked")
     private Collection<File> getJarFiles(String artifactId) throws MojoExecutionException
     {
         // disabled for Vaadin: checkGwtUserVersion();
@@ -315,6 +316,7 @@ extends AbstractMojo
     }
 
     // TODO replace with getJarFiles() if possible
+    @SuppressWarnings("unchecked")
     protected Collection<File> getJarAndDependencies(String artifactId)
             throws MojoExecutionException {
 

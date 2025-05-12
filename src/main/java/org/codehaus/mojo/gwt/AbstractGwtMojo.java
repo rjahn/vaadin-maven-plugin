@@ -79,6 +79,7 @@ extends AbstractMojo
     /** GWT artifacts groupId */
     public static final String GWT_GROUP_ID = "com.google.gwt";
     public static final String VAADIN_GROUP_ID = "com.vaadin";
+    public static final String GANZLEICHT_GROUP_ID = "at.ganzleicht.vaadin";
 
     // --- Some Maven tools ----------------------------------------------------
 
@@ -320,8 +321,17 @@ extends AbstractMojo
     protected Collection<File> getJarAndDependencies(String artifactId)
             throws MojoExecutionException {
 
-        Artifact rootArtifact = getArtifact(VAADIN_GROUP_ID, artifactId, null);
+        String sGrpId = GANZLEICHT_GROUP_ID;
 
+        Artifact rootArtifact = getArtifact(sGrpId, artifactId, null);
+
+        if (rootArtifact == null)
+        {
+            sGrpId = VAADIN_GROUP_ID;
+        
+	    rootArtifact = getArtifact(sGrpId, artifactId, null);
+        }
+        
         ArtifactResolutionResult result = null;
 
         try {
@@ -335,7 +345,7 @@ extends AbstractMojo
                 if (logVersion) {
                     getLog().debug(
                             "Trying to resolve the version of "
-                                    + VAADIN_GROUP_ID
+                                    + sGrpId
                                     + ":"
                                     + artifactId
                                     + " based on the version of vaadin-shared in the project POM");
@@ -343,7 +353,7 @@ extends AbstractMojo
 
                 // assume that artifact is not in project - try to resolve with
                 // version number from vaadin-shared
-                Artifact vaadinSharedArtifact = getArtifact(VAADIN_GROUP_ID,
+                Artifact vaadinSharedArtifact = getArtifact(sGrpId,
                         "vaadin-shared", null);
                 if (vaadinSharedArtifact == null) {
                     // No vaadin-shared found, this is possibly when running clean and artifacts have not been resolved
@@ -351,7 +361,7 @@ extends AbstractMojo
                     return Collections.emptyList();
                 }
 
-                rootArtifact = artifactFactory.createArtifact( VAADIN_GROUP_ID, artifactId, vaadinSharedArtifact.getBaseVersion(), "provided", "jar" );
+                rootArtifact = artifactFactory.createArtifact(sGrpId, artifactId, vaadinSharedArtifact.getBaseVersion(), "provided", "jar" );
                 resolver.resolveAlways(rootArtifact, remoteRepositories,
                         localRepository);
 

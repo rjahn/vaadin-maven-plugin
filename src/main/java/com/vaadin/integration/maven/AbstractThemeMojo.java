@@ -61,7 +61,7 @@ public abstract class AbstractThemeMojo extends AbstractGwtShellMojo {
     protected boolean isAtLeastVaadinVersion(int major, int minor) {
         // find "vaadin-shared" and check its version
         for (Artifact artifact : getProjectArtifacts()) {
-            if (VAADIN_GROUP_ID.equals(artifact.getGroupId())
+            if ((VAADIN_GROUP_ID.equals(artifact.getGroupId()) || GANZLEICHT_GROUP_ID.equals(artifact.getGroupId()))
                     && "vaadin-shared".equals(artifact.getArtifactId())) {
                 // TODO this is an ugly hack because Maven does not tolerate
                 // version numbers of the form "7.1.0.beta1"

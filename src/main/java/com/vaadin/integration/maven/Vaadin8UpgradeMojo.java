@@ -93,7 +93,7 @@ public class Vaadin8UpgradeMojo extends AbstractGwtShellMojo {
     protected String getVaadinVersion() {
         // find "vaadin-shared" and check its version
         for (Artifact artifact : getProjectArtifacts()) {
-            if (VAADIN_GROUP_ID.equals(artifact.getGroupId())
+            if ((VAADIN_GROUP_ID.equals(artifact.getGroupId()) || GANZLEICHT_GROUP_ID.equals(artifact.getGroupId()))
                     && "vaadin-shared".equals(artifact.getArtifactId())) {
                 return artifact.getVersion();
             }

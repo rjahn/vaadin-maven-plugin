@@ -28,7 +28,7 @@
   </parent>
   <groupId>at.ganzleicht.vaadin</groupId>
   <artifactId>vaadin-maven-plugin</artifactId>
-  <version>9.1.3</version>
+  <version>9.1.3.1</version>
   <packaging>maven-plugin</packaging>
   <name>Vaadin Plug-in for Maven</name>
   <description>
@@ -105,7 +105,7 @@
     <!-- TODO this would also be used in an archetype, currently broken -->
     <!-- This property is used in a filtered resources to check the version compatibility -->
     <vaadin.version>${project.version}</vaadin.version>
-    <gwt.version>2.11.0</gwt.version>
+    <gwt.version>2.12.2</gwt.version>
     <!--  apt filtering doesn't support dot -->
     <vaadinVersion>${vaadin.version}</vaadinVersion>
     <vaadin.version.latest>8.1.6</vaadin.version.latest> <!-- Set by CI environment -->
@@ -794,7 +794,7 @@
               <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
       </plugin>
-      
+
       
       <!-- POM flattener -->
       <plugin>

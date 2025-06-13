@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -65,7 +66,6 @@ public class DefaultGwtModuleReader
         this.classpathBuilder = classpathBuilder;
     }
 
-    @SuppressWarnings("unchecked")
     public List<String> getGwtModules()
     {
         //Use a Set to avoid duplicate when user set src/main/java as <resource>
@@ -155,10 +155,19 @@ public class DefaultGwtModuleReader
             {
                 urls[i++] = file.toURI().toURL();
             }
-            InputStream stream = new URLClassLoader( urls ).getResourceAsStream( modulePath );
-            if ( stream != null )
-            {
-                return readModule( name, stream );
+
+
+            try (
+                URLClassLoader loader = new URLClassLoader(urls);
+                InputStream stream = loader.getResourceAsStream( modulePath )
+                ) {
+
+                if ( stream != null )
+                {
+                    return readModule( name, stream );
+                }
+            } catch(IOException ioex) {
+                log.error(ioex.getMessage());
             }
         }
         catch ( MalformedURLException e )

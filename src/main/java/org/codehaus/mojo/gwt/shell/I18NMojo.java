@@ -34,7 +34,7 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 /**
  * Creates I18N interfaces for constants and messages files.
  *
- * @author Sascha-Matthias Kulawik <sascha@kulawik.de>
+ * @author Sascha-Matthias Kulawik &lt;sascha@kulawik.de&gt;
  * @author ccollins
  * @version $Id$
  */

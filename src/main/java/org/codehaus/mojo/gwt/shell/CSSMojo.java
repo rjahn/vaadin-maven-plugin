@@ -20,7 +20,7 @@ package org.codehaus.mojo.gwt.shell;
  */
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -43,7 +43,7 @@ import java.nio.charset.Charset;
  * Will use the utility tool provided in gwt sdk which create a corresponding Java interface for accessing 
  * the classnames used in the file.
  *
- * @author Stale Undheim <undheim@corporater.com>
+ * @author Stale Undheim &lt;undheim@corporater.com&gt;
  * @author olamy
  * @since 2.1.0-1
  */
@@ -74,6 +74,7 @@ public class CSSMojo
         return true;
     }
 
+    @Override
     public void doExecute()
         throws MojoExecutionException, MojoFailureException
     {
@@ -120,6 +121,7 @@ public class CSSMojo
                                 .addToClasspath( getGwtUserJar() )
                                 .setOut( new StreamConsumer()
                                     {
+                                        @Override
                                         public void consumeLine( String line )
                                         {
                                             content.append( line ).append( SystemUtils.LINE_SEPARATOR );

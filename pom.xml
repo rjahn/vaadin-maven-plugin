@@ -100,8 +100,8 @@
     <!-- Set this to 'false' to have Spotless complain about formatting -->
     <spotless.check.skip>true</spotless.check.skip>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
     <!-- TODO this would also be used in an archetype, currently broken -->
     <!-- This property is used in a filtered resources to check the version compatibility -->
     <vaadin.version>${project.version}</vaadin.version>
@@ -115,7 +115,7 @@
     <gwtVersion>${gwt.version}</gwtVersion>
     <mavenVersion>3.9.9</mavenVersion>
     <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
-    <mojo.java.target>1.8</mojo.java.target>
+    <mojo.java.target>8</mojo.java.target>
     <doxia-sitetoolsVersion>1.6</doxia-sitetoolsVersion>
     <!--  to be able on powerfull ci machine to change it tru the cli :-) -->
     <it.localWorkers>-1</it.localWorkers>
@@ -126,41 +126,6 @@
 
     <wscdn.version>0.9.2</wscdn.version>
   </properties>
-
-  <distributionManagement>
-    <repository>
-      <id>vaadin-staging</id>
-      <name>Staging repository</name>
-      <url>https://central.sonatype.com/api/v1/publisher/upload</url>
-    </repository>
-    <snapshotRepository>
-      <id>vaadin-snapshots</id>
-      <name>Snapshot repository</name>
-      <url>https://central.sonatype.com/repository/maven-snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-  <repositories>
-    <repository>
-      <id>vaadin-snapshots</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>google-snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>

@@ -674,6 +674,7 @@
         <configuration>
           <!-- see https://jira.codehaus.org/browse/MNG-5346 -->
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+          <requiredJavaVersion>${maven.compiler.target}</requiredJavaVersion>
           <requirements>
             <jdk>${maven.compiler.target}</jdk>
           </requirements>
